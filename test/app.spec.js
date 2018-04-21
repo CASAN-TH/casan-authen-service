@@ -1,4 +1,5 @@
 const request = require('supertest');
+const assert = require('assert');
 const app = require('../src/app');
 
 describe('CRUD test',function(){
@@ -10,10 +11,10 @@ describe('CRUD test',function(){
             password: 'P@ssw0rd'
         })
         .expect(200)
-        .expect({
-            username: 'admin',
-            password: 'P@ssw0rd'
-        })
-        .end(done);
+        .end(function(err, res){
+            var result = res.body;
+            assert.equal(result.status, 'success');
+            done();
+        });
     })
 });
