@@ -1,9 +1,7 @@
 const app = require('./config/express');
+const controller = require('./controllers/controller');
 
-app.get('/api/auth/signin',(req,res)=>{
-    res.json({
-        status: 'success'
-    });
-});
+app.post('/api/auth/signup', controller.signup);
+app.post('/api/auth/signin', controller.signin);
 
 module.exports = app;

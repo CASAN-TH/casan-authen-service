@@ -10,18 +10,40 @@ describe('CRUD test',function(){
     afterEach(function(done){
         mongoose.disconnect(done);
     });
-    it('POST /api/auth/signin test case normal signin', function(done){
+    
+    it('POST /api/auth/signup test case normal signup', function(done){
         request(app)
-        .get('/api/auth/signin')
+        .post('/api/auth/signup')
         .send({
             username: 'admin',
             password: 'P@ssw0rd'
         })
         .expect(200)
-        .end(function(err, res){
-            var result = res.body;
-            assert.equal(result.status, 'success');
-            done();
+        .end((err, res)=> {
+            if(err){
+                done(err);
+            }else{
+                assert.equal(res.body.status,'success');
+                done();
+            }
         });
-    })
+    });
+
+    it('POST /api/auth/signin test case normal signin', function(done){
+        request.agent(app)
+        .post('/api/auth/signin')
+        .send({
+            username: 'admin',
+            password: 'P@ssw0rd'
+        })
+        .expect(200)
+        .end((err, res)=> {
+            if(err){
+                done(err);
+            }else{
+                assert.equal(res.body.status,'success');
+                done();
+            }
+        });
+    });
 });
