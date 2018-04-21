@@ -1,8 +1,12 @@
 const request = require('supertest');
 const assert = require('assert');
+const mongoose = require('../src/config/mongoose');
 const app = require('../src/app');
 
 describe('CRUD test',function(){
+    beforeEach(function(done){
+        mongoose.connect(done);
+    });
     it('POST /api/auth/signin test case normal signin', function(done){
         request(app)
         .get('/api/auth/signin')
