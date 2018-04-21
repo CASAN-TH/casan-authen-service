@@ -1,0 +1,22 @@
+{
+  "name": "casan-authen-service",
+  "version": "1.0.0",
+  "description": "authen-service",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "authen",
+    "service"
+  ],
+  "author": "casan",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.1.1"
+  }
+}
