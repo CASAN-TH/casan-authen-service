@@ -7,6 +7,9 @@ describe('CRUD test',function(){
     beforeEach(function(done){
         mongoose.connect(done);
     });
+    afterEach(function(done){
+        mongoose.disconnect(done);
+    });
     it('POST /api/auth/signin test case normal signin', function(done){
         request(app)
         .get('/api/auth/signin')

@@ -9,3 +9,13 @@ exports.connect = (callback) => {
         }
     })
 }
+
+exports.disconnect = (callback) => {
+    mongoose.disconnect((err)=>{
+        if(err){
+            console.log(err.message);
+        }else{
+            if(callback) callback();
+        }
+    })
+}
